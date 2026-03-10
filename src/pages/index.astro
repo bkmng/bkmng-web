@@ -6,50 +6,222 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="A platform for understanding how organizations exist and change over time." />
 		<title>BKMNG</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300;400&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet" />
 	</head>
 	<body>
+		<header>
+			<nav>
+				<a href="/" class="wordmark">
+					<svg viewBox="0 0 44 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+						<circle cx="7" cy="10" r="5" fill="#0d4a4a" opacity="0.4"/>
+						<line x1="12" y1="10" x2="20" y2="10" stroke="#0d4a4a" stroke-width="2" stroke-linecap="round"/>
+						<circle cx="25" cy="10" r="5" fill="#0d4a4a" opacity="0.4"/>
+						<line x1="30" y1="10" x2="38" y2="10" stroke="#0d4a4a" stroke-width="2" stroke-linecap="round"/>
+						<circle cx="43" cy="10" r="5" fill="#0d4a4a"/>
+					</svg>
+					BKMNG
+				</a>
+				<a href="https://github.com/bkmng/becoming" target="_blank" rel="noopener">Becoming spec ↗</a>
+			</nav>
+		</header>
+
 		<main>
-			<h1>BKMNG</h1>
+			<section class="hero">
+				<h1>BKMNG</h1>
+				<p class="tagline">A platform for understanding how<br/>organizations exist and change over time.</p>
+			</section>
+
+			<section class="content">
+				<div class="block">
+					<h2>The problem</h2>
+					<p>
+						Organizations make strategic choices continuously — but rarely represent them
+						explicitly. Decisions are implicit. Assumptions go unstated. The rationale
+						behind the work is invisible, even to the people doing it.
+					</p>
+				</div>
+
+				<div class="block">
+					<h2>The model</h2>
+					<p>
+						Becoming is a formal model for representing organizational strategy as
+						machine-readable records. Decisions, assumptions, activities, actors,
+						resources, and results — and the relations between them.
+					</p>
+					<a href="https://github.com/bkmng/becoming" class="link" target="_blank" rel="noopener">
+						Read the open specification ↗
+					</a>
+				</div>
+
+				<div class="block">
+					<h2>Status</h2>
+					<p>
+						Early development. BKMNG is using the Becoming model to document
+						its own strategic work — building the demo by building the thing.
+					</p>
+				</div>
+
+				<div class="block">
+					<h2>Contact</h2>
+					<p>
+						<a href="mailto:frode@bkmng.no" class="link">frode@bkmng.no</a>
+					</p>
+				</div>
+			</section>
 		</main>
+
+		<footer>
+			<span>BKMNG</span>
+		</footer>
 	</body>
 </html>
 
 <style>
-	*, *::before, *::after {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
+	:root {
+		--ink:    #0a0a0a;
+		--muted:  #6b7280;
+		--border: #e5e7eb;
+		--bg:     #ffffff;
+		--brand:  #0d4a4a;
+		--serif:  'IBM Plex Serif', Georgia, serif;
+		--mono:   'IBM Plex Mono', monospace;
 	}
 
-	html, body {
-		height: 100%;
-	}
+	*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+	html, body { height: 100%; }
 
 	body {
-		background-color: #ffffff;
-		color: #0a0a0a;
-		font-family: 'IBM Plex Serif', Georgia, serif;
+		background: var(--bg);
+		color: var(--ink);
+		font-family: var(--serif);
 		-webkit-font-smoothing: antialiased;
+		line-height: 1.6;
 	}
 
-	main {
-		height: 100vh;
+	/* ── Nav ── */
+	header {
+		position: sticky;
+		top: 0;
+		background: var(--bg);
+		border-bottom: 1px solid var(--border);
+		z-index: 10;
+	}
+
+	nav {
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 0 2rem;
+		height: 3.5rem;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		gap: 2rem;
 	}
 
-	h1 {
-		font-size: clamp(2.5rem, 8vw, 6rem);
+	.wordmark {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		text-decoration: none;
+		color: var(--ink);
+		font-size: 1rem;
+		font-weight: 400;
+		letter-spacing: 0.2em;
+		margin-right: auto;
+	}
+
+	.wordmark svg { height: 16px; width: auto; }
+
+	nav a:not(.wordmark) {
+		font-size: 0.8rem;
 		font-weight: 300;
-		letter-spacing: 0.25em;
-		color: #0a0a0a;
+		letter-spacing: 0.08em;
+		text-decoration: none;
+		color: var(--muted);
+		text-transform: uppercase;
+		transition: color 0.15s;
+	}
+
+	nav a:not(.wordmark):hover { color: var(--brand); }
+
+	/* ── Main ── */
+	main {
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	/* ── Hero ── */
+	.hero {
+		padding: 8rem 0 5rem;
+		border-bottom: 1px solid var(--border);
+		margin-bottom: 5rem;
+	}
+
+	.hero h1 {
+		font-size: clamp(4rem, 12vw, 8rem);
+		font-weight: 300;
+		letter-spacing: 0.3em;
+		line-height: 1;
+		margin-bottom: 2rem;
+		color: var(--ink);
+	}
+
+	.tagline {
+		font-size: clamp(1rem, 2.5vw, 1.2rem);
+		font-weight: 300;
+		color: var(--muted);
+		line-height: 1.7;
+		font-style: italic;
+	}
+
+	/* ── Content grid ── */
+	.content {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		gap: 4rem 5rem;
+		padding-bottom: 8rem;
+	}
+
+	.block h2 {
+		font-family: var(--mono);
+		font-size: 0.7rem;
+		font-weight: 400;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--muted);
+		margin-bottom: 1rem;
+	}
+
+	.block p {
+		font-size: 0.95rem;
+		line-height: 1.75;
+		margin-bottom: 0.75rem;
+	}
+
+	.link {
+		font-size: 0.875rem;
+		color: var(--brand);
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+
+	/* ── Footer ── */
+	footer {
+		border-top: 1px solid var(--border);
+		padding: 1.5rem 2rem;
+		max-width: 960px;
+		margin: 0 auto;
+		font-family: var(--mono);
+		font-size: 0.7rem;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: var(--muted);
 	}
 </style>
+
